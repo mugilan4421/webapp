@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> demo  of javascript </title>
+<style>
+div {
+ background-color:black;
+ width:200px;
+ height:200px;
+ transition:2s;
+}
+.max {
+margin-left:200px;
+background-color:red;
+}
+</style>
+</head>
+<body>
+<div id="box" ></div>
+<button onclick="changes()">button</button>
+<script>
+var box=document.getElementById("box")
+function changes(){
+
+
+box.setAttribute("class","max")
+}
+
+</script>
+</body>
+</html>

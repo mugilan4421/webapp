@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>demo of javascript</title>
+</head>
+<body>
+  <div id="inputContainer">
+    <input class="numInput" >
+    <input class="numInput" >
+  </div>
+  <button onclick="addInput()">Add Input</button>
+  <button onclick="mugilan()">Add</button>
+  <p id="result">Result:</p>
+   <script>
+    var inputContainer = document.getElementById("inputContainer");
+    var resultParagraph = document.getElementById("result");
+
+    function addInput() {
+      var newInput = document.createElement("input");
+      inputContainer.append(newInput);
+    }
+
+    function mugilan() {
+      var inputElements = document.getElementsByClassName("numInput");
+      var total = 0;
+
+      for (var i = 0; i < inputElements.length; i++) {
+        var inputValue = Number(inputElements[i].value);
+        total += inputValue;
+      }
+
+     // Display the result in the paragaph
+      resultParagraph.textContent = "Result: " + total;
+
+      // Reset input values
+      for (var i = 0; i < inputElements.length; i++) {
+        inputElements[i].value = "";
+      }
+    }
+  </script>
+</body>
+</html>

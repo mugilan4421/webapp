@@ -1,0 +1,34 @@
+<!Doctype html>
+<html>
+<head>
+<title> INPUT JAVASCRIPT </title>
+</head>
+<body>
+<input id="Inputbox" onkeyup="change()">
+<button>button</button>
+<h1  id="result">Result</h1>
+
+<h2 id="changing">result</h2>
+<button onclick="update(event)">john</button>
+<button onclick="update(event)">Mugilan</button>
+<button onclick="update(event)">Karthi</button>
+<script>
+var box=document.getElementById("Inputbox")
+var result=document.getElementById("result")
+function change()
+{
+  result.textContent=box.value
+}
+
+
+var clas=document.getElementById("changing")
+function update(event)
+{
+clas.textContent=event.target.textContent
+
+}
+
+
+</script>
+</body>
+</html>

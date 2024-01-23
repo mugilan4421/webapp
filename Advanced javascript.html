@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Advance  of javascript </title>
+<style>
+body {
+  margin-left:45%;
+}
+</style>
+</head>
+<body>
+
+
+<input id="num1">
+<input id="num2">
+<button onclick="mugilan()"> add </button>
+<p id="result">result</p>
+
+
+
+<h1 id="demo1">mugilan</h1>
+<button onclick="button()">Restart</button>
+
+<h1> guess the number </h1>
+<input id="guessnumber">
+<button onclick="check()">guess</button>
+<p id="answer">you are wrong/right</p>
+<p id="totalscore">score:10</p>
+<script>
+console.log("adding two numbers")
+var box1=document.getElementById("num1")
+var box2=document.getElementById("num2")
+var result=document.getElementById("result")
+
+
+function mugilan()
+{
+var box1value=Number(box1.value)
+var box2value=Number(box2.value)
+var total = box1value+box2value
+ result.textContent="result:"+total
+}
+
+
+
+console.log("changing the text")
+var clas=document.getElementById("demo1")
+function button()
+{
+clas.textContent="dinesh"
+}
+
+
+
+console.log("random number")
+var a=Math.random()
+console.log( Math.floor(a*10)+1)
+
+var guessnumber=document.getElementById("guessnumber")
+var answer=document.getElementById("answer")
+var randomnumber=Math.floor(Math.random()*10)+1
+var totalscore=document.getElementById("totalscore")
+var score=10
+function check()
+{
+var enterednumber=guessnumber.value
+if(randomnumber==enterednumber)
+{
+    console.log("right")
+    answer.textContent="right"
+    alert("you won")
+}
+ else {
+ score=score-1
+ totalscore.textContent="score"+score
+answer.textContent="wrong"
+}
+}
+</script>
+</body>
+</html>
