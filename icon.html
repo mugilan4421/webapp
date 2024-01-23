@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title> DROP DOWN TEST </title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Edu+TAS+Beginner:wght@400;500&family=Geologica:wght@400;700&family=Lilita+One&family=Oswald:wght@500;700&family=Playpen+Sans:wght@300&family=Poppins:wght@200;300;500;600;700&family=Roboto+Slab:wght@400;600;800&family=Roboto:wght@100;300;400;500&family=Russo+One&family=Secular+One&family=Yanone+Kaffeesatz&display=swap" rel="stylesheet">
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border box;
+}
+.colors {
+    display: flex;
+    width: 100%;
+    flex-direction:row;
+
+	 
+}
+
+.sky_blue {
+    background-color:#5ACDA6;
+    width:100%;
+    text-align: center;
+    padding-top:50px;
+	height:300px;
+	
+}
+
+.green {
+    background-color:#91AC41;
+    width:100%;
+    text-align: center;
+    padding-top: 50px;
+	height:300px;
+}
+
+.orange {
+    background-color:#E4B476;
+    width:100%;
+    text-align: center;
+    padding-top: 50px;
+	height:300px;
+}
+
+.pink {
+    background-color:#EF8093;
+    width:100%;
+    text-align: center;
+    padding-top: 50px;
+	height:300px;
+}
+
+.heading{
+    color: #fff;
+    font-size: 26px;
+    margin: 5px;
+font-family: 'Roboto Slab', serif;
+	
+}
+
+.sub_heading{
+    color: #fff;
+    font-size: 20px;
+    padding:  3px 45px 80px 45px;
+}
+
+.fresh_food_container {
+display:flex;
+flex-wrap:wrap;
+flex-direction: column;
+align-items: center;
+text-align: center;
+width:100%;
+justify-content: center;
+background-color:#F6EEE1;
+box-sizing: border-box;
+
+	
+	
+	
+}
+
+.header {
+    padding: 10px;
+    font-size: 20px;
+}
+
+.title {
+    color: green;
+    padding: 0;
+	font-family: 'Edu TAS Beginner', cursive;
+	font-size:20px;
+}
+
+.heading1 {
+    font-size: 29px;
+    padding:0;
+	font-family: 'Roboto', sans-serif;
+	font-weight: bold;
+	
+}
+
+.sub_heading1 {
+    font-size: 18px;
+    color: #4b4b4b;
+    margin: 0 20%;
+	padding:15px;
+}
+
+
+.features {
+    display: flex;
+	flex wrap: wrap;
+	flex-direction:row;
+    width: 80%;
+	margin:0;
+	padding:0 2px;
+    box-sizing:border box;
+}
+
+.content {
+    display: flex;
+
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+	justify-content: center;
+    width: 23%;
+    padding: 5px;
+   
+
+}
+
+.border {
+    display: flex;
+	
+    justify-content: center;
+    align-items: center;
+    background-color:#E3B474;
+    border-radius: 50%;
+    height: 110px;
+    width: 110px;
+}
+
+.icon {
+    width: 100px;
+    height: 60px;
+	color:#DDFCF7;
+}
+
+.heading2 {
+    font-size: 23px;
+    padding: 18px;
+	font-family: 'Poppins', sans-serif;
+	font-weight: bold;
+}
+
+.sub_heading2 {
+    font-size: 25px;
+    color: #4b4b4b;
+    margin: 0 20%;
+	line-height:25px;
+}
+
+@media all and (max-width:992px) {
+    .colors {
+	display:flex;
+	flex-wrap:wrap;
+	padding:45px;
+
+        flex-direction: column;
+        align-items: center;
+		width:100%;
+		float:left;
+		padding:5px;
+		
+		
+    }
+	.content {
+      width: 48%; /* Two columns on tablets */
+      margin: 1%;
+    }
+
+    .features {
+        flex-direction: column;
+        align-items: center;
+		justify-content: center;
+    }
+
+    .fresh_food_container {
+        flex-direction: column;
+        align-items: center;
+        
+    }
+@media all and (max-width: 767px) {
+    .colors {
+        flex-direction: column;
+		flex: 1 1 calc(40% - 20px);
+        align-items:center;
+		width:100%;
+		float:left;
+		padding:5px;
+		
+		
+    }
+
+    .features {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .fresh_food_container {
+        flex-direction: column;
+        align-items: center;
+        
+    }
+}
+
+
+
+
+
+
+
+</style>
+</head>
+
+<body>
+    <div class="colors">
+ <div class="sky_blue"><ion-icon name="leaf-outline" class="icon"></ion-icon>
+  <div class="heading">Step 01</div>
+  <div class="sub_heading">Here are some of the things he has been doing: Brand Ambassador and Philanthropy: 
+  </div>
+  </div>
+ <div class="green"><ion-icon name="color-filter-outline" class="icon"></ion-icon>
+ <div class="heading">Step 02</div>
+<div class="sub_heading">Here are some of the things he has been doing: Brand Ambassador and Philanthropy: 
+</div>
+</div>
+<div class="orange"><ion-icon name="bag-remove-outline" class="icon"></ion-icon>
+<div class="heading">Step 03</div>
+<div class="sub_heading"> Here are some of the things he has been doing: Brand Ambassador and Philanthropy: </div>
+</div>
+<div class="pink"><ion-icon name="logo-flickr" class="icon"></ion-icon>
+<div class="heading">Step 04</div>
+<div class="sub_heading">Here are some of the things he has been doing: Brand Ambassador and Philanthropy: 
+</div>
+</div>
+</div>
+ <div class="fresh_food_container">
+ <div class="header"><br><br><br>
+ <div class="title">Fresh food</div>
+ <div class="heading1">Our Vegan Store!</div>
+ <div class="sub_heading1">Here are some of the things he has been doing: Brand Ambassador and Philanthropy: 
+</div><br>
+</div>
+<div class="features">
+<div class="content">
+<div class="border"><ion-icon name="camera-outline" class="icon"></ion-icon></div><br>
+<div class="heading2">Fresh Vegetables</div><br>
+<div class="sub_heading2">Here are some of the things he has been doing: Brand Ambassador and Philanthropy: </div>
+</div>
+<div class="content">
+<div class="border"><ion-icon name="rocket-outline" class="icon"></ion-icon>
+</div><br>
+<div class="heading2">High Quality
+</div><br>
+<div class="sub_heading2">Here are some of the things he has been doing: Brand Ambassador and Philanthropy:
+</div>
+</div>
+<div class="content">
+<div class="border"><ion-icon name="logo-twitter" class="icon"></ion-icon>
+</div><br>
+<div class="heading2">Sale</div><br>
+<div class="sub_heading2">Here are some of the things he has been doing: Brand Ambassador and Philanthropy: 
+</div>
+</div>
+<div class="content">
+<div class="border"><ion-icon name="logo-wechat" class="icon"></ion-icon>
+</div><br>
+<div class="heading2">Best Price</div><br>
+<div class="sub_heading2">Here are some of the things he has been doing: Brand Ambassador and Philanthropy: 
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
