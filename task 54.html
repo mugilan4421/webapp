@@ -1,0 +1,683 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title> friday </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Bebas+Neue&family=Catamaran:wght@100;200&family=Edu+TAS+Beginner:wght@400;500&family=Geologica:wght@400;700&family=Lilita+One&family=Oswald:wght@500;700&family=Playpen+Sans:wght@300&family=Poppins:wght@200;300;500;600;700&family=Roboto+Slab:wght@400;600;800&family=Roboto:wght@100;300;400;500&family=Russo+One&family=Secular+One&family=Yanone+Kaffeesatz&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+}
+
+.header {
+    top: 0;
+    left: 0;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 70px;
+    box-shadow: 0 0 5px rgb(201, 199, 199);
+    align-items: center;
+    text-align: center;
+    z-index: 1000;
+}
+
+.word {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 20px;
+    gap: 12px;
+    padding:20px 20px 20px 0 ;
+
+}
+
+.arabic {
+    color: #187872;
+    font-size: 45px;
+    padding: 32px;
+    gap: 10px;
+    float: left;
+    -webkit-text-stroke: 1px black;
+    -webkit-text-stroke: 1px black;
+}
+
+.text {
+    font-size: 17px;
+    font-weight: bold;
+    padding-bottom: 3px;
+}
+
+.senten {
+    color: black;
+    font-size: 10px;
+    gap: 16px;
+}
+
+.left_header {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    padding: 10px 55px 10px 0;
+}
+
+.header_icon {
+    width: 24px;
+    height: 30px;
+}
+
+.right_header {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 10px;
+    gap: 14px;
+}
+
+.header_txt {
+    align-items: center;
+    text-align: start;
+    margin: 17px;
+}
+
+.code {
+    color: #C6C6C6;
+    font-weight: 100;
+}
+
+.company {
+    color: black;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.ion {
+    padding: 10px;
+    margin-left: 70px;
+}
+
+.body {
+    display: flex;
+    margin-top: 70px;
+    margin-left: 27px;
+
+}
+
+.left_body {
+    width: 27%;
+    top: 70px;
+    left: 0;
+    background-color: #339E94;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    overflow-y: scroll;
+    height: calc(100vh - 70px);
+    font-size: 16px;
+}
+
+div.features:hover {
+    background-color: #4CAAA1;
+}
+
+.icv_hide {
+    /* display: none; */
+    visibility: hidden;
+    margin-bottom: -155px;
+}
+
+.features:hover+.icv_hide {
+    /* display: block; */
+    visibility: visible;
+    margin-bottom: 10px;
+   
+}
+
+
+.txt:hover {
+    background-color: #4CAAA1;
+}
+
+.right_body {
+    margin-left: 27%;
+    width: 73%;
+    overflow-y: scroll;
+    height: calc(100vh - 70px);
+}
+
+.arrow_icon {
+    display: flex;
+    font-size: 30px;
+    margin-bottom: -20px;
+    position: relative;
+    left: 90%;
+    color: #e4dfdf;
+}
+
+.features {
+    display: flex;
+    padding: 17px;
+    gap: 20px;
+}
+
+ul li {
+    padding: 10px;
+    text-decoration: none;
+    margin-left: 50px;
+}
+
+.right_title {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin-top: 10px;
+    align-items: center;
+}
+
+.right_txt {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    font-weight: normal;
+}
+
+.right_content {
+    font-size: 18px;
+    align-items: center;
+}
+
+span {
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.right_title {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin-top: 10px;
+    align-items: center;
+}
+
+.right_txt {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.right_content {
+    font-size: 17px;
+    align-items: center;
+}
+
+span {
+    font-size: 16px;
+    font-weight: 400;
+    margin-right: 10px;
+}
+
+.content_section {
+    margin: 20px 10% 0 10%;
+    line-height: 20px;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    line-height: 23px;
+}
+
+.content_line {
+    width: 100%;
+    height: 1px;
+    box-shadow: 0 0 5px rgb(201, 199, 199);
+    margin-bottom: 18px;
+}
+
+.content_heading {
+    color: #339E94;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.content_subheading {
+    color: #339E94;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 24px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
+
+.content_icon {
+    font-size: 30px;
+    color: gray;
+}
+
+.sub_content {
+    display: flex;
+    flex-direction: row;
+    gap: 80px;
+    margin: 5px 0;
+}
+
+.content_subheading {
+    font-size: 15px;
+}
+
+.buttons {
+    text-align: end;
+}
+
+.cancel {
+    padding: 10px 30px;
+    border-radius: 30px;
+    border: none;
+    background-color: gainsboro;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.save {
+    padding: 10px 30px;
+    border: none;
+    border-radius: 30px;
+    background-color: #222C3E;
+    color: #fff;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.content_icon {
+    color: #D4B47A;
+}
+
+.icone {
+    color: #D4B47A;
+    font-weight: 300;
+}
+
+.submit {
+    padding: 10px 30px;
+    border: none;
+    border-radius: 30px;
+    background-color: #D4BA7A;
+    color: #fff;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.asterix {
+    color: #FFA3A3;
+
+}
+
+.copyrights {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 200;
+    margin: 5% 0;
+    padding-left: 29px;
+    font-size: 15px;
+}
+
+.navs {
+    font-family: 'Roboto', sans-serif;
+    color: #D4B47A;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.font {
+    color: #C6E4E1;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.txt {
+    font-family: 'Roboto', sans-serif;
+    color: #C6E4E1;
+    font-size: 17px;
+}
+
+.lighter {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    padding-bottom: 20px;
+}
+
+.bold {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.shadow {
+    border-left: 1px solid #f5F5F5;
+    height: 50px;
+    display: inline-block;
+    box-shadow: 0 10px 6px -6px #777;
+}
+
+
+
+</style>
+    
+
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="left_header">
+                <div class="arabic">تجربة
+                    <div class="senten">جستجوسکوںسکوں</div>
+                </div>
+                <div class="shadow"></div>
+                <div class="logo">
+                     <img src="image.jpg" alt=""width="38px" height="68px"></div>
+                </div>
+                <div class="word">نوازشعنایتسکوں<br> Oman Investment Autority</div>
+</div>
+            
+            <div class="right_header">
+                <div>Arabic</div>
+                <img src="dubai.png" alt="" width="90px" height="40px">
+                <ion-icon name="expand-outline" class="header_icon"></ion-icon>
+                <ion-icon name="qr-code-outline" class="header_icon"></ion-icon>
+                <ion-icon name="notifications-outline" class="header_icon"></ion-icon>
+                <ion-icon name="logo-instagram" class="header_icon"></ion-icon>
+                <div class="header_txt">
+                    <div class="text">
+                        Business Gateways International LLC
+
+                    </div>
+                    <div class="Code">
+                        Company Code: <span class="company">01A15240</span>
+                        <span class="ion"><ion-icon name="chevron-down-circle-outline" class="icone"></ion-icon></span>
+                    </div>
+
+
+                </div>
+				</div>
+            </div>
+        
+
+        <div class="body">
+            <div class="left_body">
+                <div class="features">
+                    <ion-icon name="swap-horizontal-outline" class="arrow_icon"></ion-icon>
+                </div>
+                <div class="features">
+                    <ion-icon name="play-circle-outline" class="font"></ion-icon>
+                    <div class="txt">
+                        Dashboard
+                    </div>
+
+                </div>
+                <div class="features">
+                    <ion-icon name="people-outline" class="font"></ion-icon>
+                    <div class="txt">
+                        Enterprise Admin
+                    </div>
+                </div>
+                <div class="features">
+                    <ion-icon name="grid-outline" class="font"></ion-icon>
+                    <div class="txt">
+                        Stackholder Management
+                    </div>
+                </div>
+                <div class="features"  >
+                    <ion-icon name="bar-chart-outline" class="font"></ion-icon>
+                    <div class="txt" >
+                        ICV Management
+                    </div>
+
+                </div>
+
+
+                <ul style="list-style-type: '- ';" class=" icv_hide">
+                    <li class="txt">Introduction</li>
+                    <li class="txt">Contract Management</li>
+                    <li class="txt">ICV Plan Management</li>
+                    <li class="txt">ICV Reporting Management</li>
+                </ul>
+                <div class="features">
+                    <ion-icon name="color-filter-outline" class="font"></ion-icon>
+                    <div class="txt">
+                        Profile Management
+                    </div>
+                </div>
+                <div class="features">
+                    <ion-icon name="logo-laravel" class="font"></ion-icon>
+                    <div class="txt">
+                        QIA ICV management
+                    </div>
+                </div>
+                <div class="features">
+                    <ion-icon name="settings-outline" class="font"></ion-icon>
+                    <div class="txt">
+                        Master Configuration
+                    </div>
+                </div>
+                <div class="features">
+                    <ion-icon name="document-text-outline" class="font"></ion-icon>
+                    <div class="txt">
+                        Reports & Analytics
+                    </div>
+                </div>
+                <div class="features">
+                    <ion-icon name="person-outline" class="fonts"></ion-icon>
+                    <div class="txt">
+                        Contact Us
+                    </div>
+                </div>
+            </div>
+            <div class="right_body">
+                <div class="right_title">
+                    <div class="right_txt">
+                        Create Contract
+                    </div>
+                    <div class="right_content">
+                        <span>Create Contract</span>
+                        <span class="navs">
+                            < Contract Management < ICV Management < Home </span>
+                    </div>
+                </div>
+                <div class="content_section">
+                    <div class="content">
+                        <div>
+                            <div class="content_heading">
+                                Contract Information <span class="asterix">*</span>
+                            </div>
+                            <div class="lighter">
+                                Contract of PDO's new solar plant starts producing power in oman
+                            </div>
+                            <div class="content_subheading">
+                                contact Ref No:
+                            </div>
+                            <div class="bold">
+                                OM-LCC/SME-017-2023
+                            </div>
+                        </div>
+                        <div>
+                            <ion-icon name="chevron-forward-circle-outline" class="content_icon"></ion-icon>
+                        </div>
+                    </div>
+                    <div class="content_line"></div>
+
+                    <div class="content">
+                        <div>
+                            <div class="content_heading">
+                                Sub Contract Information <span class="asterix">*</span>
+                            </div>
+                            <div class="lighter">
+                                Contract of Tender of POD's new solar plant starts producing power in oman
+                            </div>
+                            <div class="sub_content">
+                                <div>
+                                    <div class="content_subheading">
+                                        Sub Contract Ref No:
+                                    </div>
+                                    <div class="bold">
+                                        CON-15262-F001
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="content_subheading">
+                                        Contract type
+                                    </div>
+                                    <div class="lighter">
+                                        General Contract
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="content_subheading">
+                                        Contract Value
+                                    </div>
+                                    <div class="lighter">
+                                        15,000,000,00
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="content_subheading">
+                                        Currency
+                                    </div>
+                                    <div class="lighter">
+                                        OMR
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <ion-icon name="chevron-forward-circle-outline" class="content_icon"></ion-icon>
+                        </div>
+                    </div>
+                    <div class="content_line"></div>
+
+                    <div class="content">
+                        <div>
+                            <div class="content_heading">
+                                Sub Contractor Information <span class="asterix">*</span>
+                            </div>
+                            <div class="lighter">
+                                Larsen & Toubro (Oman) LLC
+                            </div>
+                            <div class="sub_content">
+                                <div>
+                                    <div class="content_subheading">
+                                        CR Number
+                                    </div>
+                                    <div class="lighter">
+                                        CR007-78512
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="content_subheading">
+                                        Contractor Style of Incorptative
+                                    </div>
+                                    <div class="lighter">
+                                        Limited Liability Company (LLC)
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="content_subheading">
+                                        Contract Value
+                                    </div>
+                                    <div class="lighter">
+                                        15,000,000,00
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="content_subheading">
+                                        Currency
+                                    </div>
+                                    <div class="lighter">
+                                        OMR
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="icon">
+                            <ion-icon name="chevron-forward-circle-outline" class="content_icon"></ion-icon>
+                        </div>
+                    </div>
+                    <div class="content_line"></div>
+
+                    <div class="content">
+                        <div>
+                            <div class="content_heading">
+                                ICV Reporting Information <span class="asterix">*</span>
+                            </div>
+                            <div class="lighter">
+                                ICV Direct Reporting
+                            </div>
+                            <div class="sub_content">
+                                <div>
+                                    <div class="content_subheading">
+                                        ICV Applicable
+                                    </div>
+                                    <div class="lighter">
+                                        Yes
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="content_subheading">
+                                        Mapped ICV Pillow
+                                    </div>
+                                    <div class="lighter">
+                                        6
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div>
+                            <ion-icon name="chevron-forward-circle-outline" class="content_icon"></ion-icon>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="buttons">
+                    <button class="cancel">Cancel</button>
+                    <button class="save">Save as Draft</button>
+                    <button class="submit">Submit for Approval</button>
+                </div>
+                <p class="copyrights">Copy Rights 2023 @ All rights reserved by Oman Investment Authority.Suitnate of
+                    Oman.</p>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</body>
+
+</html>
