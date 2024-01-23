@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+
+<head>
+    
+    <title>Bootstrap</title>
+    <link rel="stylesheet" href="task 9.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<style>
+	* {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.header {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    box-shadow: 0 0 5px rgb(201, 199, 199);
+    font-size: 20px;
+    color: black;
+    align-items: center;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    align-items: center;
+}
+
+.btn btn-primary btn-sm {
+    padding: 8px 15px;
+    color: skyblue;
+    border: 2px solid skyblue;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 18px;
+    align-items: center;
+    text-align: center;
+    margin-right: 10px;
+}
+
+
+
+.body {
+    align-items: center;
+    text-align: center;
+    margin: 50px 20%;
+}
+
+.heading {
+    font-size: 50px;
+    color: black;
+}
+
+.sub_heading {
+    color: #4F5665;
+    padding: 20px;
+    font-size: 23px;
+}
+
+
+
+
+.plans {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+
+}
+
+.Free_plan {
+    border: 1px solid #9fa1a7;
+    border-radius: 3px;
+    width: 30%;
+}
+
+.Box_heading {
+    padding: 10px;
+    font-size: 24px;
+    border-bottom: 1px solid #9fa1a7;
+    color: black;
+    font-weight: 600;
+    background-color: rgb(245, 244, 244);
+}
+
+.price {
+    color: black;
+    font-size: 35px;
+    font-weight: 600;
+    padding: 15px;
+}
+
+.price span {
+    color: #4F5665;
+}
+
+.lists {
+    color: #4F5665;
+}
+
+ul li {
+    list-style: none;
+    line-height: 35px;
+    font-size: 20px;
+}
+
+.signup_btn {
+    padding: 10px 40px;
+    margin: 10px;
+    color: rgb(4, 171, 236);
+    border: 1px solid rgb(4, 146, 202);
+    border-radius: 3px;
+    font-size: 20px;
+    background-color: #fff;
+}
+
+.getstarted_btn {
+    padding: 11px 50px;
+    margin: 10px;
+    color: #fff;
+    background-color: rgb(5, 178, 247);
+    border-style: none;
+    border-radius: 3px;
+    font-size: 20px;
+}
+
+.line {
+    /* background-color: #4F5665; */
+    box-shadow: 0px 1px 2px #c3c5c9;
+    height: 1px;
+    width: 100%;
+    margin-top: 40px;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    font-size: 14px;
+    align-items: start;
+    text-align: start;
+    margin-top: 40px;
+}
+
+.B {
+    color: white;
+	border-radius:1px;
+	background-color:blue;
+    align-items: start;
+    text-align: center;
+    font-size: 17px;
+	padding: -2px;
+	width:34%;
+}
+
+.copy_rights {
+    color: #4F5665;
+    margin-left: -50px;
+    margin-right: 50px;
+}
+
+ul li {
+    color: #4F5665;
+}
+</style>
+	
+</head>
+
+<body>
+    <div>
+        <div class="header">
+            <div class="title">
+                Company Name
+            </div>
+            <div class="navbar">
+                <div>Features</div>
+                <div>Enterprice</div>
+                <div>Support</div>
+                <div>pricing</div>
+                <button type="button" class="btn btn-primary btn-sm">Sign Up</button>
+            </div>
+        </div>
+        <div class="body">
+            <div class="content">
+                <div class="heading">
+                    Pricing
+                </div>
+                <div class="sub_heading">
+                    Quickly build an effective pricing table for your potential customers with this Bootstrap example.
+                    it's built with default Bootstrap components and utilities with little customization.
+                </div>
+            </div>
+            <div class="container">
+             <div class="plans">
+			 
+			
+			
+                <div class="Free_plan">
+				<div class="row">
+				<div class="row-lg-3 row-xl-1">
+                    <div class="Box_heading">
+                        Free
+                    </div>
+                    <div class="price">
+                        &dollar;0 <span> / mo</span>
+                    </div>
+                    <div class="lists">
+                        <ul>
+                            <li>10 users included</li>
+                            <li>2GB of storage</li>
+                            <li>Email Support</li>
+                            <li>Help center access</li>
+                        </ul>
+                    </div>
+                    <button class="signup_btn">
+                        Sign up for free
+                    </button>
+					</div>
+                </div>
+				</div>
+				
+                <div class="Free_plan">
+				
+                    <div class="Box_heading">
+                        Pro
+                    </div>
+                    <div class="price">
+                        &dollar;15 <span>/ mo</span>
+                    </div>
+                    <div class="lists">
+                        <ul>
+                            <li>20 users included</li>
+                            <li>10GB of storage</li>
+                            <li>Priority Email Support</li>
+                            <li>Help center access</li>
+                        </ul>
+                    </div>
+                    <button class="getstarted_btn">
+                        Get Started
+                    </button>
+					
+                </div>
+                <div class="Free_plan">
+				
+                    <div class="Box_heading">
+                        Enterprice
+                    </div>
+                    <div class="price">
+                        &dollar;29 <span> / mo</span>
+                    </div>
+                    <div class="lists">
+                        <ul>
+                            <li>30 users included</li>
+                            <li>15GB of storage</li>
+                            <li>Phone and Email Support</li>
+                            <li>Help center access</li>
+                        </ul>
+                    </div>
+                    <button class="getstarted_btn">
+                        Contact us
+                    </button>
+					
+                </div>
+            </div>
+			</div>
+
+            <div class="line"></div>
+            
+            <div class="footer">
+                <div class="copy_rights">
+                    <div class="B">B</div>
+                    &copy;2017-2018
+                </div>
+                <div class="Features">
+                    <h2>Features</h2>
+                    <ul>
+                        <li>Cool stuff</li>
+                        <li>Random Feature</li>
+                        <li>Team Feature</li>
+                        <li>Stuff for developers</li>
+                        <li>Another one</li>
+                        <li>Last time</li>
+                    </ul>
+
+                </div>
+                <div class="Features">
+                    <h2>Resources</h2>
+                    <ul>
+                        <li>Resource</li>
+                        <li>Resource name</li>
+                        <li>Another Resource</li>
+                        <li>Final Resource</li>
+                    </ul>
+                </div>
+                <div class="Features">
+                    <h2>About</h2>
+                    <ul>
+                        <li>Team</li>
+                        <li>Locations</li>
+                        <li>Privacy</li>
+                        <li>Terms</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
