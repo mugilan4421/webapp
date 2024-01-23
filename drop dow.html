@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> DROP DOWN TEST </title>
+    <style>
+    
+	div {background-color: green;}
+div a {
+  text-decoration:none;
+  color: white;
+  font-size: 20px;
+  padding: 34px;
+  display:inline-block;
+  
+}
+ul {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+ul li {display: inline-block;}
+ul li:hover {background: #555;}
+ul li:hover ul {display:block;}
+ul li ul {
+  position: relative;
+  width: 200px;
+  display: none;
+}
+ul li ul li { 
+  background: #555; 
+  display:; 
+}
+ul li ul li a {display:block !important;} 
+ul li ul li:hover {background: #666;}
+    </style>
+    
+</head>
+
+<body>
+    <div>
+	<a href="#">useless link </a>
+	<ul>
+	<li>
+	<a href="#">dropdown list</a>
+	<ul>
+	<li> <a href="#"> dinesh </a> </li>
+	<li> <a href="#"> mugilan </a> </li>
+	<li> <a href="#"> kabilan </a> </li>
+	</ul>
+	</li>
+	</div>
+	
+    
+</body>
+
+</html>
