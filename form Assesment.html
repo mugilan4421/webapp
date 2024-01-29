@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FORM ASSESSMENT</title>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      font-size: 23px;
+      font-weight: lighter;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    #form-container {
+      max-width: 400px;
+      margin: 50px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      font-family: 'Roboto', sans-serif;
+      color: #333;
+    }
+
+    form {
+      display: grid;
+      grid-gap: 10px;
+    }
+
+    .input-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    label {
+      margin-right: 10px;
+    }
+
+    input {
+      flex: 1;
+      padding: 8px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 4px;
+      color: #fff;
+    }
+
+    #save-btn {
+      background-color: #4caf50;
+    }
+
+    #save-btn:hover {
+      background-color: #45a049;
+    }
+
+    #update-btn {
+      background-color: #2196F3;
+    }
+
+    #update-btn:hover {
+      background-color: #0b7dda;
+    }
+
+    #VAlidate {
+      max-width: 300px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    strong {
+      margin-right: 5px;
+      font-weight: bold;
+    }
+
+    button {
+      background-color: #3498db;
+      color: #fff;
+      padding: 8px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    .error {
+      color: red;
+      font-size: 12px;
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="form-container">
+  <h2 style="text-align: center; color: #333;">Form</h2>
+
+  <form id="myForm">
+    <div class="input-container">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <div id="name-error" class="error"></div>
+    </div>
+
+    <div class="input-container">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      <div id="email-error" class="error"></div>
+    </div>
+
+    <div class="input-container">
+      <label for="mobile">Mobile Number:</label>
+      <input type="tel" id="mobile" name="mobile" required>
+      <div id="mobile-error" class="error"></div>
+    </div>
+
+    <div class="button-container">
+      <button type="button" onclick="storeddata()" id="save-btn">Save</button>
+      <button type="button" onclick="clearForm()">Clear</button>
+    </div>
+  </form>
+</div>
+
+<div id="VAlidate" style="display: none;">
+  <h2 style="text-align: center; color: #333;">SAVE INFORMATION</h2>
+  <ul id="data-list"></ul>
+</div>
+
+<script>
+  // Simulated data storage
+  var userData = [];
+
+  function validateForm() {
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var mobile = document.getElementById('mobile').value;
+
+    // Validation for Name (at least 6 characters)
+    if (name.length < 3) {
+      document.getElementById('name-error').innerText = 'Name must have at least 6 characters.';
+      return false;
+    } else {
+      document.getElementById('name-error').innerText = '';
+    }
+
+    // Validation for Email
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+      document.getElementById('email-error').innerText = 'Invalid email format.';
+      return false;
+    } else {
+      document.getElementById('email-error').innerText = '';
+    }
+
+    // Validation for Mobile Number (at least 10 digits)
+    var mobilePattern = /^\d{10}$/;
+    if (!mobilePattern.test(mobile)) {
+      document.getElementById('mobile-error').innerText = 'Mobile number must have at least 10 digits.';
+      return false;
+    } else {
+      document.getElementById('mobile-error').innerText = '';
+    }
+
+    return true;
+  }
+
+  function storeddata() {
+    // Validate the form before proceeding
+    if (!validateForm()) {
+      return;
+    }
+
+    // Rest of your existing code for storing data
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var mobile = document.getElementById('mobile').value;
+
+    // Check if it's an update operation
+    var isUpdate = document.getElementById('save-btn').innerText === 'Update';
+
+    if (isUpdate) {
+      // Here you can implement your update logic
+      var indexToUpdate = userData.findIndex(function(user) {
+        return user.name === name;
+      });
+
+      if (indexToUpdate !== -1) {
+        userData[indexToUpdate] = { name: name, email: email, mobile: mobile };
+        updateDataList();
+        alert('Information updated successfully');
+        clearForm();
+        document.getElementById('save-btn').innerText = 'Save';
+        return;
+      }
+    }
+
+    // Save logic
+    userData.push({ name: name, email: email, mobile: mobile });
+    updateDataList();
+    alert('Information saved successfully');
+    clearForm();
+    document.getElementById('VAlidate').style.display = 'block';
+  }
+
+  function clearForm() {
+    document.getElementById('myForm').reset();
+    document.getElementById('save-btn').innerText = 'Save';
+  }
+
+  function editData(name, email, mobile) {
+  // Clear the form fields
+  clearForm();
+
+  // Populate the form fields with existing values
+  document.getElementById('name').value = name;
+  document.getElementById('email').value = email;
+  document.getElementById('mobile').value = mobile;
+
+  // Change the button text to indicate update mode
+  document.getElementById('save-btn').innerText = 'Update';
+}
+
+
+
+  function updateDataList() {
+  var dataList = document.getElementById('data-list');
+  dataList.innerHTML = '';
+
+  // Add a new list item for the updated data
+  var updatedItem = document.createElement('li');
+  updatedItem.innerHTML = `
+    <strong>Name:</strong> ${userData[userData.length - 1].name}<br>
+    <strong>Email:</strong> ${userData[userData.length - 1].email}<br>
+    <strong>Mobile:</strong> ${userData[userData.length - 1].mobile}<br>
+    <button onclick="editData('${userData[userData.length - 1].name}', '${userData[userData.length - 1].email}', '${userData[userData.length - 1].mobile}')">Edit</button>
+  `;
+  dataList.appendChild(updatedItem);
+
+  // Clear the form fields after updating the data
+  clearForm();
+  document.getElementById('save-btn').innerText = 'Save';
+}
+
+
+</script>
+
+</body>
+</html>
