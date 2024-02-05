@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FORM ASSESSMENT</title>
+  <style>
+    body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 17px;
+  font-weight: lighter;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+}
+
+#form-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+form {
+  display: grid;
+  grid-gap: 10px;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+label {
+  margin-right: 10px;
+}
+
+input,
+select {
+  flex: 1;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+}
+
+#save-btn {
+  background-color: #4caf50;
+}
+
+#save-btn:hover {
+  background-color: #45a049;
+}
+
+#update-btn {
+  background-color: #2196F3;
+}
+
+#update-btn:hover {
+  background-color: #0b7dda;
+}
+
+#VAlidate {
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+button {
+  background-color: #3498db;
+  color: #fff;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-left: 10px;
+}
+
+</style>
+</head>
+<body>
+
+<div id="form-container">
+  <h2 style="text-align: center; color: #333;">Form</h2>
+
+  <form id="myForm">
+    <div class="input-container">
+      <label for="firstname">First Name:</label>
+      <input type="text" id="firstname" name="firstname" required>
+      <div id="firstname-error" class="error"></div>
+    </div>
+
+    <div class="input-container">
+      <label for="lastname">Last Name:</label>
+      <input type="text" id="lastname" name="lastname" required>
+      <div id="lastname-error" class="error"></div>
+    </div>
+
+    <div class="input-container">
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age" required>
+      <div id="age-error" class="error"></div>
+    </div>
+
+    <div class="input-container">
+      <label for="address">Address:</label>
+      <input type="text" id="address" name="address" required>
+      <div id="address-error" class="error"></div>
+    </div>
+
+    <div class="input-container">
+      <label for="sex">Sex:</label>
+      <select id="sex" name="sex" required>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+		<option value="female">others</option>
+      </select>
+      <div id="sex-error" class="error"></div>
+    </div>
+
+    <div class="button-container">
+      <button type="button" onclick="storeddata()" id="save-btn">Save</button>
+      <button type="button" onclick="clearForm()">Clear</button>
+    </div>
+  </form>
+</div>
+
+<div id="VAlidate" style="display: none;">
+  <h2 style="text-align: center; color: #333;">SAVE INFORMATION</h2>
+  <table id="data-table">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Age</th>
+        <th>Address</th>
+        <th>Sex</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="data-list"></tbody>
+  </table>
+</div>
+
+
+<script>
+  var userData = [];
+
+  function validateForm() {
+    var firstname = document.getElementById('firstname').value;
+    var lastname = document.getElementById('lastname').value;
+    var age = document.getElementById('age').value;
+    var address = document.getElementById('address').value;
+    var sex = document.getElementById('sex').value;
+
+    // Validation for First Name (at least 3 characters)
+    if (firstname.length < 3) {
+      document.getElementById('firstname-error').innerText = 'First Name must have at least 3 characters.';
+      return false;
+    } else {
+      document.getElementById('firstname-error').innerText = '';
+    }
+
+    // Validation for Last Name (at least 3 characters)
+    if (lastname.length < 3) {
+      document.getElementById('lastname-error').innerText = 'Last Name must have at least 3 characters.';
+      return false;
+    } else {
+      document.getElementById('lastname-error').innerText = '';
+    }
+
+    // Validation for Age (must be a positive number)
+    if (age <= 0 || isNaN(age)) {
+      document.getElementById('age-error').innerText = 'Age must be a positive number.';
+      return false;
+    } else {
+      document.getElementById('age-error').innerText = '';
+    }
+
+   
+    if (address.length === 0) {
+      document.getElementById('address-error').innerText = 'Address is required.';
+      return false;
+    } else {
+      document.getElementById('address-error').innerText = '';
+    }
+
+   
+    if (sex === "") {
+      document.getElementById('sex-error').innerText = 'Please select a gender.';
+      return false;
+    } else {
+      document.getElementById('sex-error').innerText = '';
+    }
+
+    return true;
+  }
+
+  function storeddata() {
+    if (!validateForm()) {
+        return;
+    }
+
+    var firstname = document.getElementById('firstname').value;
+    var lastname = document.getElementById('lastname').value;
+    var age = document.getElementById('age').value;
+    var address = document.getElementById('address').value;
+    var sex = document.getElementById('sex').value;
+
+    var isUpdate = document.getElementById('save-btn').innerText === 'Update';
+    var updateIndex = document.getElementById('save-btn').getAttribute('data-index');
+
+    if (isUpdate && updateIndex !== null) {
+        userData[updateIndex] = {
+            firstname: firstname,
+            lastname: lastname,
+            age: age,
+            address: address,
+            sex: sex
+        };
+
+        updateDataList();
+        alert('Information updated successfully');
+        clearForm();
+        document.getElementById('save-btn').innerText = 'Save';
+        document.getElementById('save-btn').removeAttribute('data-index');
+        return;
+    }
+
+    // Save logic for new entry
+    userData.push({
+        firstname: firstname,
+        lastname: lastname,
+        age: age,
+        address: address,
+        sex: sex
+    });
+    updateDataList();
+    alert('Information saved successfully');
+    clearForm();
+    document.getElementById('VAlidate').style.display = 'block';
+}
+
+
+  function clearForm() {
+    document.getElementById('myForm').reset();
+    document.getElementById('save-btn').innerText = 'Save';
+  }
+
+  function editData(firstname, lastname, age, address, sex, index) {
+    // Populate the form fields with existing values
+    document.getElementById('firstname').value = firstname;
+    document.getElementById('lastname').value = lastname;
+    document.getElementById('age').value = age;
+    document.getElementById('address').value = address;
+    document.getElementById('sex').value = sex;
+
+    // Set a data attribute to store the index of the user being edited
+    document.getElementById('save-btn').setAttribute('data-index', index);
+
+    // Change the button text to indicate update mode
+    document.getElementById('save-btn').innerText = 'Update';
+}
+
+
+
+
+  function updateDataList() {
+    var dataTable = document.getElementById('data-list');
+    dataTable.innerHTML = '';
+
+    userData.forEach(function (user, index) {
+      var row = dataTable.insertRow();
+      row.innerHTML = `
+        <td>${user.firstname}</td>
+        <td>${user.lastname}</td>
+        <td>${user.age}</td>
+        <td>${user.address}</td>
+        <td>${user.sex}</td>
+        <td>
+          <button onclick="editData('${user.firstname}', '${user.lastname}', '${user.age}', '${user.address}', '${user.sex}', ${index})">Edit</button>
+        
+		</td>
+		
+      `;
+    });
+	
+
+    clearForm();
+    document.getElementById('save-btn').innerText = 'Save';
+  }
+</script>
+
+
+</body>
+</html>
