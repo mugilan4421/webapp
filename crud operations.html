@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CRUD OPERATIONS</title>
+    <link rel="stylesheet" href="crud_task.css">
+	
+</head>
+<body>
+<h2> Form Table</h2>
+<form autocomplete="off" onsubmit="onformSubmit()">
+    <div>
+        <label for="empid">Employee ID</label>
+        <input type="text" name="empid" id="empid" required>
+    </div>
+    <div>
+        <label for="empname">Employee Name</label>
+        <input type="text" name="empname" id="empname" required>
+    </div>
+    <div>
+        <label for="dob">Date of Birth</label>
+        <input type="date" name="dob" id="dob" required>
+    </div>
+    <div>
+        <label for="department">Department</label>
+        <input type="text" name="department" id="department" required>
+    </div>
+    <div>
+        <label for="joiningdate">Joining Date</label>
+        <input type="date" name="joiningdate" id="joiningdate" required>
+    </div>
+    <div class="form_action button">
+        <input type="submit" value="submit">
+        <input type="reset" value="reset">
+    </div>
+</form>
+<td>
+    
+</td>
+        <table class="list" id="storelist" style="display: none;">
+            <thead>
+                <tr>
+                    <th>Employee ID</th>
+                    <th>Employee Name</th>
+                    <th>Date of Birth</th>
+                    <th>Department</th>
+                    <th>Joining Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+    </td>
+    <script>
+        var selectedRow = null;
+
+        function onformSubmit() {
+    event.preventDefault();
+    if (validateForm()) {
+        var formData = readformData();
+        if (selectedRow === null) {
+            insertNewRecord(formData);
+            document.getElementById("storelist").style.display = "table";
+            alert("submitted successfully!");
+        } else {
+            updateRecord(formData);
+            alert("updated successfully!");
+        }
+        resetForm();
+    }
+}
+
+        function validateForm() {
+            var empid = document.getElementById("empid").value;
+            var empname = document.getElementById("empname").value;
+            var dob = document.getElementById("dob").value;
+            var department = document.getElementById("department").value;
+            var joiningdate = document.getElementById("joiningdate").value;
+
+            // Regular expressions for validation
+            var empidRegex = /^\d+$/;
+            var empnameRegex = /^[a-zA-Z\s]+$/;
+            var dobRegex = /^\d{4}-\d{2}-\d{2}$/;
+            var joiningdateRegex = /^\d{4}-\d{2}-\d{2}$/;
+
+            if (!empidRegex.test(empid)) {
+                alert("Employee ID should contain only digits.");
+                return false;
+            }
+            if (!empnameRegex.test(empname)) {
+                alert("Employee name should contain only letters and spaces.");
+                return false;
+            }
+            if (!dobRegex.test(dob)) {
+                alert("Date of Birth should be in YYYY-MM-DD format.");
+                return false;
+            }
+            if (!joiningdateRegex.test(joiningdate)) {
+                alert("Joining Date should be in YYYY-MM-DD format.");
+                return false;
+            }
+            return true;
+        }
+
+        function readformData() {
+            var formData = {};
+            formData["empid"] = document.getElementById("empid").value;
+            formData["empname"] = document.getElementById("empname").value;
+            formData["dob"] = document.getElementById("dob").value;
+            formData["department"] = document.getElementById("department").value;
+            formData["joiningdate"] = document.getElementById("joiningdate").value;
+            return formData;
+        }
+
+        function insertNewRecord(data) {
+            var table = document.getElementById("tableBody");
+            var newRow = table.insertRow(table.length);
+            cell1 = newRow.insertCell(0);
+            cell1.innerHTML = data.empid;
+            cell2 = newRow.insertCell(1);
+            cell2.innerHTML = data.empname;
+            cell3 = newRow.insertCell(2);
+            cell3.innerHTML = data.dob;
+            cell4 = newRow.insertCell(3);
+            cell4.innerHTML = data.department;
+            cell5 = newRow.insertCell(4);
+            cell5.innerHTML = data.joiningdate;
+            cell6 = newRow.insertCell(5);
+            cell6.innerHTML = `<button type="button" onclick="onEdit(this)" class="edit">Edit</button>
+                   <button type="button" onclick="onDelete(this)" class="Delete">Delete</button>`;
+        }
+
+        function resetForm() {
+            document.getElementById("empid").value = "";
+            document.getElementById("empname").value = "";
+            document.getElementById("dob").value = "";
+            document.getElementById("department").value = "";
+            document.getElementById("joiningdate").value = "";
+            selectedRow = null;
+        }
+
+        function onEdit(td) {
+            selectedRow = td.parentElement.parentElement;
+            document.getElementById("empid").value = selectedRow.cells[0].innerHTML;
+            document.getElementById("empname").value = selectedRow.cells[1].innerHTML;
+            document.getElementById("dob").value = selectedRow.cells[2].innerHTML;
+            document.getElementById("department").value = selectedRow.cells[3].innerHTML;
+            document.getElementById("joiningdate").value = selectedRow.cells[4].innerHTML;
+        }
+
+        function updateRecord(formData) {
+            selectedRow.cells[0].innerHTML = formData.empid;
+            selectedRow.cells[1].innerHTML = formData.empname;
+            selectedRow.cells[2].innerHTML = formData.dob;
+            selectedRow.cells[3].innerHTML = formData.department;
+            selectedRow.cells[4].innerHTML = formData.joiningdate;
+        }
+
+        function onDelete(td) {
+    if (confirm('I want to delete this row')) {
+        row = td.parentElement.parentElement;
+        document.getElementById("storelist").deleteRow(row.rowIndex);
+        resetForm();
+        alert("deleted successfully!");
+    }
+}
+</script>
+</body>
+</html>
