@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CRUD OPERATIONS</title>
+    <link rel="stylesheet" href="crud_task.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<h2> Form Table</h2>
+
+
+
+<form autocomplete="off" onsubmit="onformSubmit()">
+    <div>
+        <label for="empid">Employee ID</label>
+        <input type="text" name="empid" id="empid" required>
+    </div>
+    <div>
+        <label for="empname">Employee Name</label>
+        <input type="text" name="empname" id="empname" required>
+    </div>
+    <div>
+        <label for="dob">Date of Birth</label>
+        <input type="date" name="dob" id="dob" required>
+    </div>
+    <div>
+        <label for="department">Department</label>
+        <input type="text" name="department" id="department" required>
+    </div>
+    <div>
+        <label for="joiningdate">Joining Date</label>
+        <input type="date" name="joiningdate" id="joiningdate" required>
+    </div>
+    <div class="form_action button">
+        <input type="submit" value="submit">
+        <input type="reset" value="reset">
+    </div>
+</form>
+<div class="Searchfields">
+<input type="text" id="searchInput" placeholder="Employee ID" style="display: none;">
+<input type="text" id="searchInput1" placeholder="Empname" style="display: none;">
+<input type="text" id="searchInput2" placeholder="dob" style="display: none;">
+<input type="text" id="searchInput3" placeholder="department" style="display: none;">
+<input type="text" id="searchInput4" placeholder="joiningdate" style="display: none;">
+</div>
+
+
+
+<table class="list" id="storelist" style="display: none;">
+    <thead>
+        <tr>
+            <th class="sortable" onclick="sortTable(0)">
+                Employee ID:
+                <button onclick="toggleSortOrder(0)"><i class="fa fa-sort" aria-hidden="true"></i></button>
+            </th>
+            <th class="sortable" onclick="sortTable(1)">
+                Employee Name:
+                <button onclick="toggleSortOrder(1)"><i class="fa fa-sort" aria-hidden="true"></i></button>
+            </th>
+            <th class="sortable" onclick="sortTable(2)">
+                Date of Birth:
+                <button onclick="toggleSortOrder(2)"><i class="fa fa-sort" aria-hidden="true"></i></button>
+            </th>
+            <th class="sortable" onclick="sortTable(3)">
+                Department:
+                <button onclick="toggleSortOrder(3)"><i class="fa fa-sort" aria-hidden="true"></i></button>
+            </th>
+            <th class="sortable" onclick="sortTable(4)">
+                Joining Date:
+                <button onclick="toggleSortOrder(4)"><i class="fa fa-sort" aria-hidden="true"></i></button>
+            </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+</table>
+
+
+<div id="pagination" style="display: none;">
+    <button onclick="prevPage()">Previous</button>
+    <span id="currentPage">1</span>
+    <button onclick="nextPage()">Next</button>
+</div>
+
+<script>
+var currentPage = 1;
+var rowsPerPage = 5; 
+var defaultData = [
+    { empid: "1001", empname: "John Doe", dob: "1990-05-15", department: "Engineering", joiningdate: "2015-07-20" },
+    { empid: "1002", empname: "Jane Smith", dob: "1985-10-25", department: "HR", joiningdate: "2018-01-10" },
+    { empid: "1003", empname: "Michael Johnson", dob: "1988-03-12", department: "Finance", joiningdate: "2016-09-05" },
+    { empid: "1004", empname: "Emily Brown", dob: "1992-07-28", department: "Marketing", joiningdate: "2017-12-15" },
+    { empid: "1005", empname: "David Wilson", dob: "1995-01-30", department: "Operations", joiningdate: "2019-05-20" }
+];
+
+// Function to insert default data
+function insertDefaultData() {
+    var table = document.getElementById("tableBody");
+    for (var i = 0; i < defaultData.length; i++) {
+        insertNewRecord(defaultData[i]);
+    }
+}
+
+// Call insertDefaultData to insert default data values
+insertDefaultData();
+
+var table = document.getElementById("storelist").getElementsByTagName('tbody')[0];
+var totalRows = table.rows.length;
+var totalPages = Math.ceil(totalRows / rowsPerPage);
+
+// Function to display rows based on pagination
+function displayRows() {
+    var start = (currentPage - 1) * rowsPerPage;
+    var end = Math.min(start + rowsPerPage, totalRows);
+
+    for (var i = 0; i < totalRows; i++) {
+        if (i >= start && i < end) {
+            table.rows[i].style.display = '';
+        } else {
+            table.rows[i].style.display = 'none';
+        }
+    }
+
+    document.getElementById("currentPage").textContent = currentPage;
+}
+
+function nextPage() {
+    if (currentPage < totalPages) {
+        currentPage++;
+        displayRows();
+    }
+}
+
+function prevPage() {
+    if (currentPage > 1) {
+        currentPage--;
+        displayRows();
+    }
+}
+
+// Call displayRows initially to show the first page
+displayRows();
+
+var selectedRow = null;
+
+        function onformSubmit() {
+    event.preventDefault();
+    if (validateForm()) {
+        var formData = readformData();
+        if (selectedRow === null) {
+            insertNewRecord(formData);
+            document.getElementById("storelist").style.display = "table";
+            document.getElementById("pagination").style.display = "block"; 
+			document.getElementById("searchInput").style.display = "block"; 
+			document.getElementById("searchInput1").style.display = "block"; 
+			document.getElementById("searchInput2").style.display = "block"; 
+			document.getElementById("searchInput3").style.display = "block"; 
+			document.getElementById("searchInput4").style.display = "block"; 
+			
+            
+            alert("Submitted successfully!");
+        } else {
+            updateRecord(formData);
+            alert("Updated successfully!");
+        }
+        resetForm();
+    }
+}
+
+        function validateForm() {
+            var empid = document.getElementById("empid").value;
+            var empname = document.getElementById("empname").value;
+            var dob = document.getElementById("dob").value;
+            var department = document.getElementById("department").value;
+            var joiningdate = document.getElementById("joiningdate").value;
+
+            
+            var empidRegex = /^\d+$/;
+            var empnameRegex = /^[a-zA-Z\s]+$/;
+            var dobRegex = /^\d{4}-\d{2}-\d{2}$/;
+            var joiningdateRegex = /^\d{4}-\d{2}-\d{2}$/;
+
+            if (!empidRegex.test(empid)) {
+                alert("Employee ID should contain only digits.");
+                return false;
+            }
+            if (!empnameRegex.test(empname)) {
+                alert("Employee name should contain only letters and spaces.");
+                return false;
+            }
+            if (!dobRegex.test(dob)) {
+                alert("Date of Birth should be in YYYY-MM-DD format.");
+                return false;
+            }
+            if (!joiningdateRegex.test(joiningdate)) {
+                alert("Joining Date should be in YYYY-MM-DD format.");
+                return false;
+            }
+            return true;
+        }
+
+        function readformData() {
+            var formData = {};
+            formData["empid"] = document.getElementById("empid").value;
+            formData["empname"] = document.getElementById("empname").value;
+            formData["dob"] = document.getElementById("dob").value;
+            formData["department"] = document.getElementById("department").value;
+            formData["joiningdate"] = document.getElementById("joiningdate").value;
+            return formData;
+        }
+
+        function insertNewRecord(data) {
+            var table = document.getElementById("tableBody");
+            var newRow = table.insertRow(table.length);
+            cell1 = newRow.insertCell(0);
+            cell1.innerHTML = data.empid;
+            cell2 = newRow.insertCell(1);
+            cell2.innerHTML = data.empname;
+            cell3 = newRow.insertCell(2);
+            cell3.innerHTML = data.dob;
+            cell4 = newRow.insertCell(3);
+            cell4.innerHTML = data.department;
+            cell5 = newRow.insertCell(4);
+            cell5.innerHTML = data.joiningdate;
+            cell6 = newRow.insertCell(5);
+            cell6.innerHTML = `<button type="button" onclick="onEdit(this)" class="edit">Edit</button>
+                   <button type="button" onclick="onDelete(this)" class="Delete">Delete</button>`;
+        }
+
+        function resetForm() {
+            document.getElementById("empid").value = "";
+            document.getElementById("empname").value = "";
+            document.getElementById("dob").value = "";
+            document.getElementById("department").value = "";
+            document.getElementById("joiningdate").value = "";
+            selectedRow = null;
+        }
+
+        function onEdit(td) {
+            selectedRow = td.parentElement.parentElement;
+            document.getElementById("empid").value = selectedRow.cells[0].innerHTML;
+            document.getElementById("empname").value = selectedRow.cells[1].innerHTML;
+            document.getElementById("dob").value = selectedRow.cells[2].innerHTML;
+            document.getElementById("department").value = selectedRow.cells[3].innerHTML;
+            document.getElementById("joiningdate").value = selectedRow.cells[4].innerHTML;
+        }
+
+        function updateRecord(formData) {
+            selectedRow.cells[0].innerHTML = formData.empid;
+            selectedRow.cells[1].innerHTML = formData.empname;
+            selectedRow.cells[2].innerHTML = formData.dob;
+            selectedRow.cells[3].innerHTML = formData.department;
+            selectedRow.cells[4].innerHTML = formData.joiningdate;
+        }
+
+        function onDelete(td) {
+    if (confirm('I want to delete this row')) {
+        row = td.parentElement.parentElement;
+        document.getElementById("storelist").deleteRow(row.rowIndex);
+        resetForm();
+        alert("deleted successfully!");
+    }
+}
+// Object to track sorting order for each column
+var sortOrder = {};
+
+function sortTable(columnIndex) {
+    var table, rows, switching, i, x, y, shouldSwitch;
+    table = document.getElementById("storelist");
+    switching = true;
+    
+    // Initialize sorting order for the column if not set
+    if (sortOrder[columnIndex] === undefined) {
+        sortOrder[columnIndex] = 'asc'; 
+    }
+    
+    while (switching) {
+        switching = false;
+        rows = table.rows;
+        for (i = 1; i < (rows.length - 1); i++) {
+            shouldSwitch = false;
+            x = rows[i].getElementsByTagName("TD")[columnIndex];
+            y = rows[i + 1].getElementsByTagName("TD")[columnIndex];
+            var xValue = x.innerHTML.toLowerCase();
+            var yValue = y.innerHTML.toLowerCase();
+            
+            // Determine sorting order based on column index
+            if (sortOrder[columnIndex] === 'asc') {
+                if (isNaN(xValue) || isNaN(yValue)) { 
+                    if (xValue > yValue) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                } else { // Both x and y are numbers
+                    if (parseInt(xValue) > parseInt(yValue)) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+            } else { // Descending order
+                if (isNaN(xValue) || isNaN(yValue)) { 
+                    if (xValue < yValue) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                } else { 
+                    if (parseInt(xValue) < parseInt(yValue)) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+            }
+        }
+        if (shouldSwitch) {
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+        }
+    }
+    
+    
+    if (sortOrder[columnIndex] === 'asc') {
+        sortOrder[columnIndex] = 'desc';
+    } else {
+        sortOrder[columnIndex] = 'asc';
+    }
+}
+
+
+
+document.getElementById("searchInput").addEventListener("input", function() {
+    filterTable(0, this.value.toLowerCase());
+});
+
+
+document.getElementById("searchInput1").addEventListener("input", function() {
+    filterTable(1, this.value.toLowerCase());
+});
+
+
+document.getElementById("searchInput2").addEventListener("input", function() {
+    filterTable(2, this.value.toLowerCase());
+});
+
+
+document.getElementById("searchInput3").addEventListener("input", function() {
+    filterTable(3, this.value.toLowerCase());
+});
+
+
+document.getElementById("searchInput4").addEventListener("input", function() {
+    filterTable(4, this.value.toLowerCase());
+});
+
+function filterTable(columnIndex, searchValue) {
+    var rows = document.getElementById("storelist").getElementsByTagName("tr");
+    var found = false; 
+    for (var i = 0; i < rows.length; i++) {
+        var cell = rows[i].getElementsByTagName("td")[columnIndex];
+        if (cell) {
+            var cellText = cell.textContent || cell.innerText;
+            if (cellText.toLowerCase().indexOf(searchValue) > -1) {
+                rows[i].style.display = "";
+                found = true; 
+            } else {
+                rows[i].style.display = "none";
+            }
+        }
+    }
+        if (!found) {
+        document.getElementById("tableBody").innerHTML = '<tr><td colspan="6" class="records">No records found</td></tr>';
+    }
+}
+
+
+
+    </script>
+</body>
+</html>
