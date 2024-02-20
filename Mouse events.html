@@ -1,0 +1,61 @@
+<!Doctype html>
+<html>
+<head>
+<title>MOUSE EVENTS </title>
+</head>
+<body>
+<h1>MOUSE EVENTS </h1>
+<h3>onclick</h3>
+<button onclick="myFunction()">Click me</button>
+<p id="demo"></p>
+
+<h3>doubleclick</h3>
+<p ondblclick="myFunctions()">Double-click this paragraph to trigger a function.</p>
+<p id="demo1"></p>
+
+
+<h3>onmousedownup</h3>
+<p id="myP" onmousedown="mouseDown()" onmouseup="mouseUp()">
+The mouseDown() function sets the color of this text to red.
+The mouseUp() function sets the color of this text to blue.
+</p>
+
+
+<h3>onfocus</h3>
+<h3>focusin</h3>
+<h3>focusout</h3>
+Enter your name: <input type="text" onfocus="Function(this)">
+
+<h3>onblur events </h3>
+Enter your name: <input type="text" id="fname" onblur="firstname()">
+
+<script>
+function  myFunction(){
+document.getElementById("demo").innerHTML="HELLO WORLD";
+}
+
+function myFunctions() {
+  document.getElementById("demo1").innerHTML += "Hello World ";
+}
+
+
+function mouseDown() {
+  document.getElementById("myP").style.color = "yellow";
+}
+function mouseUp() {
+  document.getElementById("myP").style.color = "orange";
+}
+
+
+function Function(x) {
+  x.style.background = "lightblue";
+}
+
+
+function firstname() {
+  let y = document.getElementById("fname");
+  y.value = y.value.toUPPERCase();
+}
+</script>
+</body>
+</html>
