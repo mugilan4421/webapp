@@ -1,0 +1,701 @@
+<!Doctype html>
+<html>
+<head>
+<title>FINAL TASK LAYOUT </title>
+<link rel="stylesheet" href="FINAL TASK.css">
+<script src="myscripts.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script>
+        
+        function toggleSubmitButton(checkbox) {
+            var submitButtonContainer = document.getElementById("submit-button-container");
+            if (checkbox.checked) {
+                submitButtonContainer.style.display = "block";
+            } else {
+                submitButtonContainer.style.display = "none";
+            }
+        }
+
+        
+        function validateForm() {
+            var companyNameInputs = document.querySelectorAll('input[name="company-name"]');
+            var expDateInputs = document.querySelectorAll('input[id="exp date"]');
+            var agreeCheckbox = document.getElementById("agree");
+
+            
+            for (var i = 0; i < companyNameInputs.length; i++) {
+                if (!companyNameInputs[i].value.trim()) {
+                    alert("Please fill in all required fields.");
+                    return false; 
+                }
+            }
+
+            
+            for (var i = 0; i < expDateInputs.length; i++) {
+                if (!expDateInputs[i].value.trim()) {
+                    alert("Please fill in all required fields.");
+                    return false; 
+                }
+            }
+
+            
+            if (!agreeCheckbox.checked) {
+                alert("Please agree to the terms and conditions.");
+                return false; 
+            }
+
+            
+            return true;
+        }
+    </script>
+	
+	<style>
+	@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap')
+body{
+	top:0;
+	margin:0;
+	font-family: "Poppins", sans-serif;
+}
+
+
+.Topleftheader {
+	display:flex;
+	
+	margin: 0 0 0 50%;
+	height:35px;
+	background-color:#FBFBFB;
+	padding: 10px 0 0 30px;
+}
+.iconheader {
+	display:flex;
+}
+.contacts {
+	font-size:15px;
+	padding-left:8px;
+	color:#999999;
+}
+.icon {
+	color:red;
+	padding-left:15px;
+	
+}
+.logo {
+	padding-left:40px;
+	
+}
+.facebook,
+.linkedln,
+.instagram,
+.youtube {
+	background-color:white;
+	font-size:14px;
+	padding-left:7px;
+	width:15px;
+	height:20px;
+}
+
+
+
+.headersection {
+	display:flex;
+	margin: 0 8% 0 8%;
+}
+
+.Star {
+	width:100px;
+	height:80px;
+}
+
+.centersection {
+ display:flex;
+ text-align:center;
+ align-items: center;
+ margin-top:35px;
+}
+
+.names a{
+ text-decoration: none;
+ padding:10px 10px 0 10px;
+ margin-bottom:25px;
+ color:#8B8B88;
+ font-size:14px;
+}
+.search  {
+	margin:48px 0 0 40px;
+}
+.urudu {
+	margin:45px 0 0 20px;
+}
+.form {
+	
+	margin:45px 0 0 20px;
+}
+.button {
+	height:40px;
+	width:70px;
+	margin:34px 0 0 20px;
+	background-color:#EE1C27;
+	color:white;
+	cursor:pointer;
+	font-size:15px;
+}
+
+
+
+.information {
+	display:flex;
+	margin-top:10px;
+	background-color:#F9F9F9;
+	height:60px;
+	font-weight:bold;
+}
+.Arrow {
+	display:flex;
+	margin-left:10%;
+	padding-top:20px;
+}
+.arrowicon {
+	color:#B6B6B6;
+}
+.Back{
+	color:#B6B6B6;
+	font-size:15px;
+}
+.Registration {
+	margin-left:23%;
+	padding-top:20px;
+	font-weight:bold;
+}
+form {
+    margin: 50px 0 0 130px; 
+    padding: 20px;
+     
+     
+  }
+select {
+    margin-left: 10px; 
+    padding: 10px; 
+    width: 600px; 
+	height:50px;
+	color:black;
+	
+  }
+  
+.red {
+	color:red;
+}
+.details {
+	margin-left:160px;
+	font-weight:bold;
+	color:red;
+}
+
+.informations {
+	color:red;
+	margin-top:30px;
+	font-weight:800;
+}
+
+
+
+
+.companyfield {
+  display: flex;
+  gap: 300px;
+  height:40px;
+  width:1000px;
+  margin-top:30px;
+}
+
+.companyfield .company-input {
+  flex: 0.5;
+  
+}
+
+.companyfields {
+  display: flex;
+  gap: 200px;
+  height:40px;
+  width:1000px;
+  margin-top:30px;
+}
+
+.companyfields .company-input {
+  flex: 0.5;
+  
+}
+
+ .input-container {
+            position: relative;
+            display: inline-block;
+            width: 40%;
+        }
+
+        .input-container input[type="text"] {
+            width: calc(100% - 20px); 
+            padding: 10px 40px 10px 30px; 
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .input-container .icon {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #aaa;
+            cursor: pointer;
+        }
+
+        .input-container .document-icon {
+            left: 0px; 
+        }
+
+        .input-container .delete-icon {
+            right: 30px; 
+        }
+		
+		.full-width {
+    width: 95%;
+	height:30px;
+	padding-right:10px;
+}
+		input {
+    font-size: 11px;
+}
+
+.arabic-input input {
+    text-align: right;
+	margin-top:30px;
+}
+
+.manager {
+	color:red;
+	margin-top:30px;
+	font-weight:800;
+}
+
+.dropdown-container {
+    display: flex;
+	margin-top:30px;
+}
+
+.dropdown {
+    margin-right: 5px; 
+    flex: 1; 
+}
+
+.dropdown select {
+    width: 86%; 
+}
+
+.terms {
+	color:red;
+}
+
+.policy {
+	border:1px solid black;
+	width:75%;
+	margin-top:30px;
+	text-align:center;
+	padding:15px 0 10px 180px;
+	display:flex;
+	
+}
+
+.captcha {
+	
+	text-align:center;
+	margin-left:20px;
+	
+}
+.outlinese {
+	color:blue;
+	font-size:30px;
+}
+
+.button-container {
+  text-align: right;
+  
+    display: none;
+  
+  margin: 30px 90px 0 0 ; 
+}
+
+.cancel-button,
+.submit-button {
+  margin-left: 10px; 
+  
+}
+.cancel-button {
+  background-color: #E8E8E8;
+  color:black; 
+  text-align:center;
+  padding:13px;
+  cursor:pointer;
+  
+}
+
+.submit-button {
+  background-color: red;
+  color: white;
+text-align:center;
+  padding:13px;  
+  cursor:pointer;
+  
+}
+
+
+
+.row {
+    display: flex;
+    justify-content: space-evenly; 
+}
+
+.item {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    margin-right: 10px;
+}
+
+
+.icon ion-icon {
+    font-size: 24px;
+}
+
+
+.info {
+    font-size: 16px;
+}
+
+
+
+
+.input-container {
+    position: relative;
+    display: inline-block;
+}
+
+.input-container input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.document-label {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.delete-icon {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+.iconsess {
+	 font-size:100px;
+	 color:#A93A3F;
+	 background-color:#FFFFFF;
+	 margin-left:40px;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+}
+
+
+
+.address-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.subheading {
+    margin-bottom: 50px; 
+color:#626367;
+font-weight:bold;
+line-height:1.4;
+padding-left:7px;
+}
+
+.heading {
+	margin-bottom:30px;
+	font-weight:800;
+	color:#626367;
+}
+.row {
+	width:100%;
+}
+
+.subheader {
+	line-height:1.7;
+	color:#626367;
+}
+.address_Footer {
+	
+	display:flex;
+	flex-direction:column;
+	margin-bottom:60px;
+	
+}
+
+.Footerheader {
+	line-height:1.4;
+	color:#626367;
+}
+.FooterButton {
+	margin-top:30px;
+	padding:10px;
+	color:white;
+	background-color:red;
+	cursor:pointer;
+}
+.footerend {
+	margin-top:130px;
+	font-size:34px;
+	padding-left:10px;
+}
+hr {
+        color:#DBDBDB;
+		width:80%;
+		
+      }
+
+
+
+
+
+
+
+    
+	</style>
+</head>
+<body>
+<div class="Topleftheader">
+<div class="iconheader">
+<ion-icon name="call-outline" class="icon"></ion-icon>
+<div class="contacts">+987 2309876</div>
+</div>
+<div class="iconheader">
+<ion-icon name="mail-outline" class="icon"></ion-icon>
+<div class="contacts">mugilan2038@gmail.com</div>
+</div>
+<div class="logo">
+<ion-icon name="logo-facebook" class="facebook"></ion-icon>
+<ion-icon name="logo-instagram" class="instagram"></ion-icon>
+<ion-icon name="logo-linkedin" class="linkedln"></ion-icon>
+<ion-icon name="logo-youtube" class="youtube"></ion-icon>
+</div>
+</div> 
+
+
+<div class="headersection">
+<img src="star.png" alt="star" class="Star">
+<div class="centersection">
+<div class="names">
+<a href="#">About</a>
+<a href="#">About us </a>
+<a href="#">Sector skills set</a>
+<a href="#">Training </a>
+<a href="#">Approvals</a>
+<a href="#">Career guidance</a>
+<a href="#">Contact</a>
+</div>
+</div>
+<div class="search">
+<ion-icon name="search-outline"></ion-icon>
+</div>
+<div class="urudu">
+<img src="urudu.png" alt="language">
+</div>
+<div class="form">Register Form </div>
+<button class="button">login</button>
+</div>
+
+<div class="information">
+<div class="Arrow">
+<ion-icon name="arrow-back-outline" class="arrowicon"></ion-icon>
+<div class="Back">Back
+</div>
+</div>
+<div class="Registration">CENTRE REGISTRATION </div>
+</div>
+
+
+<form action="#" method="post">
+  
+  <select name="assessment-type" onchange="toggleInputField()">
+    <option value="" disabled selected>Registration for... *</option>
+    <option value="technical">Technical Assessment</option>
+    <option value="aptitude">Aptitude Round</option>
+    <option value="hr">HR Round</option>
+  </select><br><br>
+
+  <div class="informations">Contact Information</div>
+  
+  <div class="companyfield">
+    <input type="text" id="company-name" name="company-name" placeholder="Opal Memebership Number *" style="flex: 1;" required>
+    <input type="text" id="exp date"  placeholder="Opal Membership Expiry Date *" style="flex: 1;" required>
+  </div><br><br>
+  
+  <div class="companyfields">
+    <input type="text" id="company-name" name="company-name" placeholder="Opal Memebership Number *" style="flex: 1;" required>
+    <input type="text" id="exp date"  placeholder="Opal Membership Expiry Date *" style="flex: 1;" required>
+  </div><br><br>
+  
+  <div class="input-container">
+            <input type="text" name="document" placeholder="document" required>
+            <ion-icon class="icon document-icon" name="document-attach-outline"></ion-icon>
+            <ion-icon class="icon delete-icon"  name="trash-outline"></ion-icon>
+        </div><br><br>
+		
+		<div class="input-container full-width">
+    <input type="text" name="document" placeholder="Company Name In English" required>
+</div>
+
+<div class="input-container full-width arabic-input">
+    <input type="text" name="document" placeholder="Company Name In Arabic" required>
+</div>
+
+<div class="manager">General Manager </div>
+
+<div class="dropdown-container">
+    <div class="dropdown">
+        <select name="department">
+            <option value="" disabled selected>Governorate</option>
+            <option value="hr">Muscat</option>
+            <option value="finance">Arabic</option>
+            <option value="marketing">Oman</option>
+            
+        </select>
+    </div>
+
+    <div class="dropdown">
+        <select name="other-dropdown">
+            <option value="" disabled selected>Wilyat</option>
+            <option value="option1">Muscat</option>
+            <option value="option2">Arabic</option>
+            <option value="option3">Oman</option>
+           
+        </select>
+    </div>
+</div>
+
+<div class="companyfields">
+    <input type="text" id="company-name" name="company-name" placeholder="Address Line 1 *" style="flex: 1;" required>
+    <input type="text" id="exp date"  placeholder="Address Line 2 *" style="flex: 1;" required>
+  </div><br><br>
+  
+  <div class="manager">General Manager Details </div>
+
+<div class="companyfields">
+    <input type="text" id="company-name" name="Focal Point Name *" placeholder="Address Line 1 *" style="flex: 1;" required>
+    <input type="text" id="exp date"  placeholder="Designation *" style="flex: 1;" required>
+  </div><br><br>
+  
+  <div class="companyfields">
+    <input type="text" id="company-name" name="Contact Email *" placeholder="Address Line 1 *" style="flex: 1;" required>
+    <input type="text" id="exp date"  placeholder="Contact Number *" style="flex: 1;" required>
+  </div><br><br>
+  
+   <label for="agree">
+        <input type="checkbox" id="agree" name="agree" onclick="toggleSubmitButton(this)" required>
+        I have read and fully understand <span class="terms">The terms and condition</span> i am authorised by my company i am agree and validate the conditions
+    </label>
+
+    <div class="policy">
+  <ion-icon name="reload-outline" class="outlinese"></ion-icon>
+  <div class="captcha">opal is a protected captcha and the <span class="terms">privacy policy</span> and <span class="terms">the terms and condition</span> apply </div>
+  </div>
+
+    <div class="button-container" id="submit-button-container" style="display: none;">
+        <button type="button" class="cancel-button">Cancel</button>
+        
+        <button type="submit" class="submit-button" onclick="validateForm()">Submit</button>
+    </div>
+</form>
+
+
+<div class="row">
+    <div class="item">
+        <div class="iconsess">
+<ion-icon name="location-outline"></ion-icon>
+</div>
+        <div class="address-info">
+            <h2 class="heading">Address</h2>
+            <div class="subheading">8th Floor, Taminat Complex Building No 55/9. <br>Street No 53. Al Ghubrah, Muscat, </div>
+</div>
+ </div>
+<div class="item">
+<div class="iconsess">
+<ion-icon name="call-outline"></ion-icon>
+        </div>
+        <div class="address-info">
+            <h2 class="heading">Contact</h2>
+            <div class="subheading">E-mail : star@opaloman.com <br> phone no:  968234567 <br> FAx :  968234567   </div>
+</div>
+</div>
+<div class="item">
+        <div class="iconsess">
+            <ion-icon name="time-outline"></ion-icon>
+        </div>
+        <div class="address-info">
+            <h2 class="heading">Timing</h2>
+            <div class="subheading">Monday-Thursday : 4:00<br>Monday-Thursday : 4:00</div>
+		</div>
+    </div>
+</div>
+
+
+
+<hr />
+
+
+<div class="row">
+    <div class="item">
+        <div class="address-info">
+            <h2 class="heading">Quick Links</h2>
+            <div class="subheader">Oman Society for petroleum</div>
+			<div class="subheader">sitemap</div>
+			<div class="subheader">Faqs</div>
+			<div class="subheader">Polices</div>
+			<div class="subheader">Terms & Conditions</div>
+        </div>
+    </div>
+<div class="item">
+<div class="address-info">
+            <h2 class="heading">Contact</h2>
+            <div class="Footerheader">or instance, in some styles of writing,<br> particularly journalistic styles, <br>a paragraph can be just one sentence long.</div>
+			<button class="FooterButton">contact</button>
+</div>
+</div>
+<div class="item">
+<div class="logo">
+<ion-icon name="logo-facebook" class="footerend"></ion-icon>
+<ion-icon name="logo-instagram" class="footerend"></ion-icon>
+<ion-icon name="logo-linkedin" class="footerend"></ion-icon>
+<ion-icon name="logo-youtube" class="footerend"></ion-icon>
+</div>
+</div>
+</div>
+
+
+
+
+
+</body>
+</html>
